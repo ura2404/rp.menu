@@ -22,8 +22,8 @@ body {
     _background-color: rgba(117, 190, 218, 0.1);
     
     margin: auto;
-    width: 50rem;
-    height: 25rem;
+    //width: 50rem;
+    //height: 25rem;
     max-width: 80vw;
     
     // сдвинуть conatiner немного вверх
@@ -104,22 +104,35 @@ body {
         flex-grow: 1;
         overflow: hidden;
         padding: 1rem;
-        
         display : flex;
-        border: 3px solid rgba(117, 190, 218, 0.2);
+        
+        /*
+        border: 4px solid rgba(117, 190, 218, 0.4);
         border-radius: 0.5rem;
+        */
+        
+        border: 5px solid transparent;
+        //border-image: linear-gradient(to left top,#adf2f7 10%,  transparent 30%, transparent 70%, #adf2f7 90%);
+        border-image: linear-gradient(to left top, #adf2f7 10%, #45777e 30%, #1e2138 70%, #adf2f7 90%);
+        border-image-slice: 1;
+        border-radius: 2.5rem;
         
         .data {
             flex-grow: 1;
-
+            
             > div {
-                transition: .30s; 
+                transition: .15s; 
                 width : 100%;
                 
-                div.cm-active{
-                    background-color: #002730;
+                .cm-item {
+                    padding : 10px 0;
+                    
+                    &.cm-active{
+                        background-color: #054a5a;
+                    }
                 }
             }
+            
         }
         
         .direct {

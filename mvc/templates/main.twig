@@ -13,13 +13,13 @@
 {% block body %}
     {{ parent() }}
     
-    <div id="login" class="top-container cm-noselect cm-active">
+    <div id="login" class="top-container cm-noselect" style="width:{{ container.x }}rem;height:{{ container.y }}rem">
         <span>ВХОД</span>
         <input id="pass" type="password" class="cm-noselect" data-pass="{{ pass }}"/>
         {# <button> ? </button> #}
     </div>
     
-    <div id="menu1" class="top-container cm-noselect">
+    <div id="menu1" class="top-container cm-noselect" style="width:{{ container.x }}rem;height:{{ container.y }}rem">
         <div class="head">
             {# <span>Меню</span> #}
             <i class="back-button fas fa-arrow-left"></i>
@@ -27,10 +27,10 @@
         <div class="box">
             <div class="data">
                 <div>
-                    <div class="cm-item cm-active">Электронная связь</div>
-                    <div class="cm-item">Системы корабля</div>
-                    <div class="cm-item">Корабельный журнал</div>
-                    <div class="cm-item">Документация корабля</div>
+                    <div class="cm-item" data-tag="email">Электронная связь</div>
+                    <div class="cm-item" data-tag="system">Системы корабля</div>
+                    <div class="cm-item" data-tag="journal">Корабельный журнал</div>
+                    <div class="cm-item" data-tag="documents">Документация корабля</div>
                     <div class="cm-item">1111</div>
                     <div class="cm-item">2222</div>
                     <div class="cm-item">3333</div>
@@ -45,9 +45,6 @@
                 <i class="up-button far fa-caret-square-up"></i>
                 <i class="down-button far fa-caret-square-down"></i>
             </div>
-        </div>
-        <div style="position: absolute">
-            dqdqwd
         </div>
     </div>
 {% endblock %}
