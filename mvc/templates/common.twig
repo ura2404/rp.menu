@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="css/fontawesome.com/5.15.3/css/all.css"/>
+        {#
+        <link rel="icon" href="{% block favicon %}res/cmatrix/ico/honeycomb.ico{% endblock %}" type="image/x-icon"/> 
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <title>{% block title %}{{ app.name }} v{{ app.version }}{% endblock %}</title>
+        <link rel="stylesheet" type="text/css" href="res/cmatrix/vendor/tailwindcss.com/tailwind.min.css"/>
+        <link rel="stylesheet" type="text/css" href="res/cmatrix/vendor/fontawesome.com/5.15.3/css/all.css"/>
+        <link rel="stylesheet" type="text/css" href="res/cmatrix/vendor/google.com/fonts/Arsenal/font.less"/>
+        <link rel="stylesheet/less" type="text/css" href="res/cmatrix/html.less"/>
+        #}
+        {% block style %}
+            <link rel="stylesheet/less" type="text/css" href="css/common.less"/>
+        {% endblock style %}
+        <script type="text/javascript" src="js/lesscss.org/3.7.1/less.min.js"></script>
+    </head>
+    <body>
+        {% block body %}
+        {% endblock %}
+    </body>
+    <script type="text/javascript" src="js/jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="js/jquery.com/jquery.md5.js"></script>
+    {#
+    <script type="text/javascript" src="res/cmatrix/vendor/jquery.js"></script>
+    #}
+    {% block js %}
+        {# <script type="module" src="js/common.js"></script> #}
+    {% endblock js %}
+</html>
