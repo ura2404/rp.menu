@@ -19,11 +19,10 @@ export default class MenuContainer {
         
         this.ActiveItem = 0;
         this.Count = this.$Container.find('.cm-item').length;
-        
         this.$Container.find('.cm-item').eq(this.ActiveItem).addClass('cm-active');
         
-        this.$First = this.$Container.find('*:first-child');
-        this.$Last =  this.$Container.find('*:last-child');
+        this.$First = this.$Container.find('.cm-item:first-child');
+        this.$Last =  this.$Container.find('.cm-item:last-child');
         
         if(this.Buttons.up) this.Buttons.up.on('click',function(e){
             Instance.up();
@@ -37,9 +36,11 @@ export default class MenuContainer {
     up(){
         if(this.ActiveItem === 0) return;
         
+        //console.log(this.$First.outerHeight(true),this.$Last.outerHeight(true),this.$Last);
+        
         this.$Container.find('.cm-item').eq(this.ActiveItem--).removeClass('cm-active').end().eq(this.ActiveItem).addClass('cm-active');
         
-        const Delta = this.$First.height();
+        const Delta = this.$First.outerHeight(true);
         const Top = parseInt(this.$Container.css('top'));
         const NewTop = Top + Delta;
         //console.log(Top,Delta,NewTop);
@@ -51,9 +52,11 @@ export default class MenuContainer {
     down(){
         if(this.ActiveItem === this.Count-1) return;
         
+        //console.log(this.$First.outerHeight(true),this.$Last.outerHeight(true),this.$Last);
+        
         this.$Container.find('.cm-item').eq(this.ActiveItem++).removeClass('cm-active').end().eq(this.ActiveItem).addClass('cm-active');
         
-        const Delta = this.$First.height();
+        const Delta = this.$First.outerHeight(true);
         const Top = parseInt(this.$Container.css('top'));
         const NewTop = Top - Delta;
         
@@ -78,7 +81,7 @@ export default class MenuContainer {
                 if(e.keyCode === 38) Instance.Buttons.up.trigger('click');
                 else if(e.keyCode === 40) Instance.Buttons.down.trigger('click');
                 else if(e.keyCode === 27) Instance.Buttons.back();
-                else if(e.keyCode === 13) Instance.Buttons.click(Instance.$Container.find('.cm-item.cm-active'));
+                else if(Instance.Buttons.click && e.keyCode === 13) Instance.Buttons.click(Instance.$Container.find('.cm-item.cm-active'));
             });
         },500);
     }

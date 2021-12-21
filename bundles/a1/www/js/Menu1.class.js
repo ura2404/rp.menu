@@ -20,7 +20,10 @@ export default class Menu {
             back  : () => this.$BackButton.trigger('click'),
             click : ($item) => {
                 const Tag = $item.data('tag');
-                if(Instance.NextContainers[Tag]) console.log($item.data('tag'));
+                if(Instance.NextContainers[Tag]){
+                    Instance.hide();
+                    Instance.NextContainers[Tag]();
+                }
             }
         });
         
@@ -43,6 +46,7 @@ export default class Menu {
     hide(){
         this.$Tag.removeClass('cm-active');
         this.ScrollMenu.disable();
+        return this;
     }
     
     // --- --- --- --- ---
@@ -55,5 +59,9 @@ export default class Menu {
     prevContainer(container){
         this.PrevContainer = container;
         return this;
+    }
+    
+    // --- --- --- --- ---
+    click(tag){
     }
 }
