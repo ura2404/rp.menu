@@ -2,7 +2,8 @@
     namespace Urx\Code;
     require_once('../../../code/common.php');
     
-    echo (new Controller(new Template('main'),new Model('main')))->Data;
+    //echo (new Controller(new Template('main'),new Model('main')))->Data;
+    echo (new Controller(new Template('main2'),new Model('main2')))->Data;
 
 /*<html>
     <head>  

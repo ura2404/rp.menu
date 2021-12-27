@@ -1,7 +1,10 @@
 <html>
     <head>
+        {# <script src="https://cdn.tailwindcss.com"></script> #}
+        <script type="text/javascript" src="js/tailwindcss.com/tailwindcss.3.0.0.js"></script>
+        
         <link rel="stylesheet" type="text/css" href="css/fontawesome.com/5.15.3/css/all.css"/>
-        <link rel="stylesheet" type="text/css" href="css/tailwindcss.com/tailwind.min.css"/>
+        {# <link rel="stylesheet" type="text/css" href="css/tailwindcss.com/tailwind.min.css"/> #}
         {#
         <link rel="icon" href="{% block favicon %}res/cmatrix/ico/honeycomb.ico{% endblock %}" type="image/x-icon"/> 
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
@@ -17,11 +20,11 @@
         <script type="text/javascript" src="js/lesscss.org/3.7.1/less.min.js"></script>
     </head>
     <body>
-        {% block body %}
-        {% endblock %}
+        {% block body %}{% endblock %}
     </body>
     <script type="text/javascript" src="js/jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="js/jquery.com/jquery.md5.js"></script>
+    
     {#
     <script type="text/javascript" src="res/cmatrix/vendor/jquery.js"></script>
     #}

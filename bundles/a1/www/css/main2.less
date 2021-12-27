@@ -1,0 +1,73 @@
+html{
+    font-size :  14px;
+    font-family: RobotoCondensed, Arial !important;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    margin : 0;
+    padding : 0;
+    background-color: black;
+    //background: url(../pic/Depositphotos_180853344_L.png) black;
+    //background: url(../pic/Depositphotos_180853344_L.png) #010215;
+    //background-size: cover;
+    //background-position : center;
+    
+    display : flex
+}
+
+.top-container {
+    &:not(.cm-active){ display: none !important; }
+    
+    position: relative;
+    top: -3rem;
+}
+
+#background {
+    background: url(../pic/Depositphotos_180853344_L.png) transparent;
+    background-size: cover;
+    background-position : center;
+}
+
+#login {
+    //display : flex;
+    //flex-direction: column;
+    
+    > span {
+        font-size: 5rem;        
+        color: #82caff;
+        text-shadow: cyan 0 0 15px;
+    }
+    
+    > input {
+        //margin: auto;
+        //padding-left: 1rem;
+        //padding-right: 1rem;
+        //width: 50rem;
+        //text-align: center;
+        
+        //background: transparent;
+        background-color: rgba(117, 190, 218, 0.1);
+        outline: none;
+        //outline: 3px solid rgba(117, 190, 218, 0.2);
+        border: none;
+        
+        //font-weight: bold;
+        font-size: 5rem;
+        color: #82ff8c;
+        text-shadow: #29ff00 0 0 15px;
+        
+        &.cm-error{
+            color: red;
+            text-shadow: red 0 0 15px;
+        }
+    }
+    
+    >div{
+        font-size: 2rem;        
+        color: #82caff;
+        text-shadow: cyan 0 0 15px;
+    }
+    
+}

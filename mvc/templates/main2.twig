@@ -1,0 +1,25 @@
+{% extends "common.twig" %}
+
+{% block style %}
+    {{ parent() }}
+    <link rel="stylesheet/less" type="text/css" href="css/main2.less"/>
+{% endblock %}
+
+{% block js %}
+    <script type="module" src="js/main2.js"></script>
+{% endblock %}
+
+
+{% block body %}
+    {{ parent() }}
+    
+    <div id="background" class="z-10 h-full w-full fixed">
+        
+    </div>
+    
+    <div id="login" class="top-container cm-noselect flex flex-col m-auto" style="_width:{{ container.x }}rem;height:{{ container.y }}rem">
+        <span class="mx-auto">ВХОД</span>
+        <input type="text" oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="cm-noselect z-10 m-auto px-3 text-center _font-bold" data-pass="{{ pass }}"/>
+        <div class="text-center">командный индентификационный номер</div>
+    </div>    
+{% endblock %}
