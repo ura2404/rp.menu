@@ -11,6 +11,7 @@
 
 
 {% block body %}
+    {% import "main2.twig" as _self %}
     {{ parent() }}
     
     <div id="background" class="z-10 h-full w-full fixed">
@@ -21,5 +22,24 @@
         <span class="mx-auto">ВХОД</span>
         <input type="text" oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="cm-noselect z-10 m-auto px-3 text-center _font-bold" data-pass="{{ pass }}"/>
         <div class="text-center">командный индентификационный номер</div>
-    </div>    
+    </div>
+    
+    {% for code,value in data %}
+        {% if code|contains(':menu')%}     {{ _self.menu(code|before(':'),value) }}
+        {% elseif code|contains(':list')%} {{ _self.list(code|before(':'),value) }}
+        {% endif %}
+    {% endfor %}
+    
 {% endblock %}
+
+{% macro menu(code,data) %}
+    <div id="menu-{{ code }}">
+        
+    </div>
+{% endmacro %}
+
+{% macro list(code,data) %}
+    <div id="list-{{ code }}">
+        
+    </div>
+{% endmacro %}

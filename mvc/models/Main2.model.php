@@ -12,6 +12,7 @@ class Main2 extends Common {
         return array_replace_recursive(parent::getData(),[
             'pass' => md5($this->Config['pass']),
             'container' => $this->Config['container'],
+            'data' => $this->Config['data'],
         ]);
     }
 
