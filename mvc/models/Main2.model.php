@@ -10,6 +10,7 @@ class Main2 extends Common {
         $this->Config = json_decode(file_get_contents($Path),true);
         
         return array_replace_recursive(parent::getData(),[
+            'error' => $this->Config ? null : 'Не определена конфигураця системы',
             'pass' => md5($this->Config['pass']),
             'container' => $this->Config['container'],
             'data' => $this->Config['data'],

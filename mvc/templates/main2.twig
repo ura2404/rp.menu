@@ -18,28 +18,53 @@
         
     </div>
     
-    <div id="login" class="top-container cm-noselect flex flex-col m-auto" style="_width:{{ container.x }}rem;height:{{ container.y }}rem">
-        <span class="mx-auto">ВХОД</span>
-        <input type="text" oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="cm-noselect z-10 m-auto px-3 text-center _font-bold" data-pass="{{ pass }}"/>
-        <div class="text-center">командный индентификационный номер</div>
-    </div>
+    {% if error == null %}
+        <div id="login" class="cm-top-container cm-noselect m-auto flex flex-col" data-type="login" style="width:{{ container.x }}rem;height:{{ container.y }}rem">
+            <span class="mx-auto">ВХОД</span>
+            <input type="text" oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="cm-noselect z-10 m-auto px-3 text-center _font-bold" data-pass="{{ pass }}"/>
+            <div class="text-center">командный индентификационный номер</div>
+        </div>
+        
+        {% for code,value in data %}
+            {% if code|contains(':menu')%}     {{ _self.menu(code|before(':'),value,container) }}
+            {% elseif code|contains(':list')%} {{ _self.list(code|before(':'),value,container) }}
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <div class="cm-top-error m-auto text-8xl w-1/2 text-center">{{ error|raw }}</div>
+    {% endif %}
     
-    {% for code,value in data %}
-        {% if code|contains(':menu')%}     {{ _self.menu(code|before(':'),value) }}
-        {% elseif code|contains(':list')%} {{ _self.list(code|before(':'),value) }}
-        {% endif %}
-    {% endfor %}
     
 {% endblock %}
 
-{% macro menu(code,data) %}
-    <div id="menu-{{ code }}">
+{% macro menu(code,data,container) %}
+    <div id="{{ code }}" class="cm-top-container cm-noselect cm-menu m-auto z-10 flex flex-col" data-type="menu" style="width:{{ container.x }}rem;height:{{ container.y }}rem">
+        <div class="cm-head flex">
+            <span>qqqq</span>
+            <span class="cm-button-back cursor-pointer ml-auto flex">
+                <i class="my-auto fas fa-arrow-left"></i>
+                <span class="my-auto ml-4 text-center text-2xl">ESC<br/>вернуться</span>
+            </span>
+        </div>
+        <div class="cm-box p-3 overflow-hidden grow flex">
+            <div class="grow relative">
+                <div class="cm-items absolute">
+                    {% for item in data%}
+                        <div class="cm-item cursor-pointer {% if loop.index == 1 %}cm-active{% endif %}" data-tag="{{ item[0] }}">{{ item[1] }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="direct ml-3 flex flex-col">
+                <i class="cm-button-up cursor-pointer far fa-caret-square-up"></i>
+                <i class="cm-button-down cursor-pointer mt-auto far fa-caret-square-down"></i>
+            </div>
+        </div>
         
     </div>
 {% endmacro %}
 
-{% macro list(code,data) %}
-    <div id="list-{{ code }}">
+{% macro list(code,data,container) %}
+    <div id="{{ code }}" class="cm-top-container cm-noselect cm-list m-auto z-10 flex flex-col" data-type="list" style="width:{{ container.x }}rem;height:{{ container.y }}rem">
         
     </div>
 {% endmacro %}

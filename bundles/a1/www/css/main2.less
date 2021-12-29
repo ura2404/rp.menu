@@ -17,7 +17,7 @@ body {
     display : flex
 }
 
-.top-container {
+.cm-top-container {
     &:not(.cm-active){ display: none !important; }
     
     position: relative;
@@ -28,6 +28,21 @@ body {
     background: url(../pic/Depositphotos_180853344_L.png) transparent;
     background-size: cover;
     background-position : center;
+}
+
+.cm-top-error {
+    color: red;
+    text-shadow: red 0 0 15px;
+    animation: pulsate 1.2s linear infinite;
+}
+
+@-webkit-keyframes pulsate {
+ //50% { color: red; text-shadow: 0 0 red, 0 0 5px red, 0 0 8px red; }
+ 50% { color: black; text-shadow: none; }
+}
+@keyframes pulsate {
+ //50% { color: red; text-shadow: 0 0 red, 0 0 5px red, 0 0 8px red; }
+ 50% { color: black; text-shadow: none; }
 }
 
 #login {
@@ -70,4 +85,35 @@ body {
         text-shadow: cyan 0 0 15px;
     }
     
+}
+
+.cm-menu {
+    .cm-head {
+        font-size: 3rem;
+        color: #82ffd7;        
+        text-shadow: #37e937 0 0 15px;        
+    }
+    
+    .cm-box {
+        font-size: 3rem;
+        color: #82caff;
+        text-shadow: cyan 0 0 15px;
+        
+        border: 4px solid rgba(117, 190, 218, 0.4);
+        //border-radius: 0.5rem;
+        border-left: none;
+        border-right: none;
+        
+        .cm-items {
+            transition: .15s;
+            
+            .cm-item {
+                &.cm-active{
+                    //background-color: #054a5a;
+                    background: linear-gradient(to right, #054a5a, #273338);
+                }
+            }
+        }
+        
+    }
 }

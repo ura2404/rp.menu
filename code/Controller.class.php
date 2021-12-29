@@ -53,6 +53,8 @@ class Controller {
     
     private function getMyData(){
         $Data = $this->Model->Data;
+        //var_dump($Data);
+        
         return $this->Twig->render($this->Template->Path, $Data ? $Data : []);
     }    
 }
