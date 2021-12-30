@@ -12,34 +12,23 @@ export default class Login {
         const Instance = this;
         
         Instance.$Tag.addClass('cm-active');
-        Instance.$Input.focus().val('').on('keydown',function(e){
-            if(e.keyCode !=13) return;
-            Instance.enter();
-            
-            const Val = $.md5($(this).val());
-            const Pass = $(this).data('pass');
-            
-            if(Val !== Pass) Instance.error();
-            else Instance.enter();
-        });
-        
+        Instance.$Input.focus().val('');
         setTimeout(() => Instance.$Input.focus(),300);
     }
 
     // --- --- --- --- ---
     hide(){
-        const Instance = this;
-        
-        Instance.$Tag.removeClass('cm-active');
-        console.log('Containers',document.Containers);
+        this.$Tag.removeClass('cm-active');
     }
     
     // --- --- --- --- ---
     error(){
         const Val = this.$Input.val();
-        this.$Input.addClass('cm-error').val('Неверно').blur();//.off('keydown');
+        console.log('error',Val);
+        
+        this.$Input.addClass('cm-error').val('Неверно').blur();
         setTimeout(()=>{
-            this.$Input.removeClass('cm-error').val(Val).focus();//.off('keydown');
+            this.$Input.removeClass('cm-error').val(Val).focus();
         },1000);
     }
     
@@ -56,4 +45,11 @@ export default class Login {
             document.Containers.main.show(Instance);
         }
     }
+    
+    // --- --- --- --- ---
+    esc(){}
+    // --- --- --- --- ---
+    up(){}
+    // --- --- --- --- ---
+    down(){}
 }

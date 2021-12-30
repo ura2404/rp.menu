@@ -18,7 +18,7 @@ export default class Cursor {
             const Now = Date.now();
             if((Now - Time) < 150) return;
             Time = Now;
-                
+            
             if(e.keyCode === 38) Instance.Up();
             else if(e.keyCode === 40) Instance.Down();
             else if(e.keyCode === 27) Instance.Esc();

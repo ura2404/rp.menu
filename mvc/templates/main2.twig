@@ -3,6 +3,14 @@
 {% block style %}
     {{ parent() }}
     <link rel="stylesheet/less" type="text/css" href="css/main2.less"/>
+    <style>
+        .cm-top-container {
+            position: relative;
+            top: {{ container.top }}rem;
+            width: {{ container.width }}rem;
+            height: {{ container.height }}rem
+        }
+    </style>
 {% endblock %}
 
 {% block js %}
@@ -26,8 +34,11 @@
         </div>
         
         {% for code,value in data %}
-            {% if code|contains(':menu')%}     {{ _self.menu(code|before(':'),value,container) }}
-            {% elseif code|contains(':list')%} {{ _self.list(code|before(':'),value,container) }}
+            {% if code|contains(':menu')%}        {{ _self.menu(code|before(':'),value) }}
+            {% elseif code|contains(':denided')%} {{ _self.denided(code|before(':'),value) }}
+            {% elseif code|contains(':video')%}   {{ _self.video(code|before(':'),value) }}
+            {% elseif code|contains(':pic')%}     {{ _self.pic(code|before(':'),value) }}
+            {% elseif code|contains(':text')%}    {{ _self.text(code|before(':'),value) }}
             {% endif %}
         {% endfor %}
     {% else %}
@@ -37,10 +48,10 @@
     
 {% endblock %}
 
-{% macro menu(code,data,container) %}
-    <div id="{{ code }}" class="cm-top-container cm-noselect cm-menu m-auto z-10 flex flex-col" data-type="menu" style="width:{{ container.x }}rem;height:{{ container.y }}rem">
+{% macro menu(code,data) %}
+    <div id="{{ code }}" class="cm-top-container cm-noselect cm-menu m-auto z-10 flex flex-col" data-type="menu">
         <div class="cm-head flex">
-            <span>qqqq</span>
+            <span class="cm-label text-center">{{ data.label }}</span>
             <span class="cm-button-back cursor-pointer ml-auto flex">
                 <i class="my-auto fas fa-arrow-left"></i>
                 <span class="my-auto ml-4 text-center text-2xl">ESC<br/>вернуться</span>
@@ -48,9 +59,22 @@
         </div>
         <div class="cm-box p-3 overflow-hidden grow flex">
             <div class="grow relative">
-                <div class="cm-items absolute">
-                    {% for item in data%}
-                        <div class="cm-item cursor-pointer {% if loop.index == 1 %}cm-active{% endif %}" data-tag="{{ item[0] }}">{{ item[1] }}</div>
+                <div class="cm-items absolute w-full">
+                    {% for item in data.data %}
+                        {# <div class="cm-item cursor-pointer {% if loop.index == 1 %}cm-active{% endif %}" data-tag="{{ item[0] }}">{{ item[1] }}</div> #}
+                        {% if code == 'email' %}
+                            <div class="cm-item cursor-pointer {% if loop.index == 1 %}cm-active{% endif %} flex" data-tag="{{ item[0] }}">
+                                <i class="ml-1 mr-5 mt-3 far fa-envelope"></i>
+                                <span>{{ item[1]|raw }}</span>
+                            </div>
+                        {% elseif code == 'journal' %}
+                            <div class="cm-item cursor-pointer {% if loop.index == 1 %}cm-active{% endif %} flex" data-tag="{{ item[0] }}">
+                                <i class="ml-1 mr-5 mt-3 far fa-sticky-note"></i>
+                                <span>{{ item[1]|raw }}</span>
+                            </div>
+                        {% else %}
+                            <div class="cm-item cursor-pointer {% if loop.index == 1 %}cm-active{% endif %}" data-tag="{{ item[0] }}">{{ item[1]|raw }}</div>
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>
@@ -59,12 +83,104 @@
                 <i class="cm-button-down cursor-pointer mt-auto far fa-caret-square-down"></i>
             </div>
         </div>
-        
     </div>
 {% endmacro %}
 
-{% macro list(code,data,container) %}
-    <div id="{{ code }}" class="cm-top-container cm-noselect cm-list m-auto z-10 flex flex-col" data-type="list" style="width:{{ container.x }}rem;height:{{ container.y }}rem">
-        
+{% macro list(code,data) %}
+    <div id="{{ code }}" class="cm-top-container cm-noselect cm-list m-auto z-10 flex flex-col" data-type="list">
+        <div class="cm-head flex">
+            <span class="cm-label text-center">{{ data.label }}</span>
+            <span class="cm-button-back cursor-pointer ml-auto flex">
+                <i class="my-auto fas fa-arrow-left"></i>
+                <span class="my-auto ml-4 text-center text-2xl">ESC<br/>вернуться</span>
+            </span>
+        </div>
+        <div class="cm-box p-3 overflow-hidden grow flex">
+            <div class="grow relative">
+                <div class="cm-items absolute">
+                    {% for item in data.data %}
+                        {% if code == 'email' %}
+                            <div class="cm-item cursor-pointer {% if loop.index == 1 %}cm-active{% endif %} flex">
+                                <i class="ml-1 mr-5 mt-3 far fa-envelope"></i>
+                                <span>{{ item[0]|raw }}</span>
+                            </div>
+                        {% elseif code == 'journal' %}
+                            <div class="cm-item cursor-pointer {% if loop.index == 1 %}cm-active{% endif %} flex">
+                                <i class="ml-1 mr-5 mt-3 far fa-sticky-note"></i>
+                                <span>{{ item[0]|raw }}</span>
+                            </div>
+                        {% else %}
+                            <div class="cm-item cursor-pointer {% if loop.index == 1 %}cm-active{% endif %}" data-tag="{{ item[0] }}">{{ item[1]|raw }}</div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="direct ml-3 flex flex-col">
+                <i class="cm-button-up cursor-pointer far fa-caret-square-up"></i>
+                <i class="cm-button-down cursor-pointer mt-auto far fa-caret-square-down"></i>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro denided(code,data) %}
+    <div id="{{ code }}" class="cm-top-container cm-noselect cm-list m-auto z-10 flex flex-col" data-type="denided">
+        <div class="cm-head flex">
+            <span class="cm-label text-center">{{ data.label }}</span>
+            <span class="cm-button-back cursor-pointer ml-auto flex">
+                <i class="my-auto fas fa-arrow-left"></i>
+                <span class="my-auto ml-4 text-center text-2xl">ESC<br/>вернуться</span>
+            </span>
+        </div>
+        <div class="cm-denided grow flex">
+            <span class="m-auto">{{ data.data }}</span>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro video(code,data) %}
+    <div id="{{ code }}" class="cm-top-container cm-noselect cm-video m-auto z-10 flex flex-col" data-type="denided">
+        <div class="cm-head flex">
+            <span class="cm-label text-center">{{ data.label }}</span>
+            <span class="cm-button-back cursor-pointer ml-auto flex">
+                <i class="my-auto fas fa-arrow-left"></i>
+                <span class="my-auto ml-4 text-center text-2xl">ESC<br/>вернуться</span>
+            </span>
+        </div>
+        <div class="cm-video grow flex">
+            <video class="" width="100%" height="100%" preload="auto" autoplay="autoplay" loop="loop" muted="muted">
+                <source src="data/{{ data.data }}" type="video/mp4"></source>
+            </video>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro pic(code,data) %}
+    <div id="{{ code }}" class="cm-top-container cm-noselect cm-pic m-auto z-10 flex flex-col" data-type="denided">
+        <div class="cm-head flex">
+            <span class="cm-label text-center">{{ data.label }}</span>
+            <span class="cm-button-back cursor-pointer ml-auto flex">
+                <i class="my-auto fas fa-arrow-left"></i>
+                <span class="my-auto ml-4 text-center text-2xl">ESC<br/>вернуться</span>
+            </span>
+        </div>
+        <div class="cm-pic grow flex">
+            <img src="data/{{ data.data }}" width="100%"></img>
+        </div>
+    </div>
+{% endmacro %}
+
+{% macro text(code,data) %}
+    <div id="{{ code }}" class="cm-top-container cm-noselect cm-text m-auto z-10 flex flex-col" data-type="denided">
+        <div class="cm-head flex">
+            <span class="cm-label text-center">{{ data.label }}</span>
+            <span class="cm-button-back cursor-pointer ml-auto flex">
+                <i class="my-auto fas fa-arrow-left"></i>
+                <span class="my-auto ml-4 text-center text-2xl">ESC<br/>вернуться</span>
+            </span>
+        </div>
+        <div class="cm-text grow flex">
+            <div class="m-auto">{{ data.data|raw }}</div>
+        </div>
     </div>
 {% endmacro %}

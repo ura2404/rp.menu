@@ -19,9 +19,6 @@ body {
 
 .cm-top-container {
     &:not(.cm-active){ display: none !important; }
-    
-    position: relative;
-    top: -3rem;
 }
 
 #background {
@@ -87,11 +84,21 @@ body {
     
 }
 
-.cm-menu {
+.cm-menu,
+.cm-list,
+.cm-video,
+.cm-pic,
+.cm-text
+{
     .cm-head {
         font-size: 3rem;
         color: #82ffd7;        
         text-shadow: #37e937 0 0 15px;        
+        
+        .cm-button-back {
+            color: yellow;        
+            text-shadow: yellow 0 0 15px;        
+        }
     }
     
     .cm-box {
@@ -116,4 +123,18 @@ body {
         }
         
     }
+    
+    .cm-denided {
+        font-size: 5rem;
+        color: red;
+        text-shadow: red 0 0 15px;
+        animation: pulsate 1.2s linear infinite;
+    }
+    
+    .cm-text {
+        font-size: 3rem;
+        color: #82caff;
+        text-shadow: cyan 0 0 15px;
+    }
+    
 }

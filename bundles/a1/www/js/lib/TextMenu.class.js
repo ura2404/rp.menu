@@ -30,8 +30,13 @@ export default class TextMenu {
         if(prev) this.Prev = prev;
         
         this.$Tag.addClass('cm-active');
+        
+        // выделить первый пункт
+        /*
         this.Index = 0;
         this.$Items.removeClass('cm-active').eq(this.Index).addClass('cm-active');
+        this.$Tag.find('.cm-items').css('top',0);
+        */
     }
 
     // --- --- --- --- ---
@@ -46,9 +51,10 @@ export default class TextMenu {
         //console.log(Tag,this.$Items.eq(this.Index).data('data'));
         
         const Data = this.$Items.eq(this.Index).data('data');
+        const Label = this.$Items.eq(this.Index).text();
         if(Data){
             Instance.hide();
-            Data.show(Instance);
+            Data.show(Instance,Label);
         }
     }
 
