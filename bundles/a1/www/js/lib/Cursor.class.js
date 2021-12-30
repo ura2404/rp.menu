@@ -16,7 +16,7 @@ export default class Cursor {
         $('body').on('keydown',function(e){
             let Time = 0;
             const Now = Date.now();
-            if((Now - Time) < 150) return;
+            if((Now - Time) < 250) return;
             Time = Now;
             
             if(e.keyCode === 38) Instance.Up();

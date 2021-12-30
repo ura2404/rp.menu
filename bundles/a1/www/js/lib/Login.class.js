@@ -28,7 +28,8 @@ export default class Login {
         
         this.$Input.addClass('cm-error').val('Неверно').blur();
         setTimeout(()=>{
-            this.$Input.removeClass('cm-error').val(Val).focus();
+            if(Val === 'Неверно') this.$Input.removeClass('cm-error').focus();
+            else this.$Input.removeClass('cm-error').val(Val).focus();
         },1000);
     }
     
