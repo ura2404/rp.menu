@@ -11,7 +11,10 @@ class Main2 extends Common {
         
         return array_replace_recursive(parent::getData(),[
             'error' => $this->Config ? null : 'Не определена конфигураця системы',
-            'pass' => md5($this->Config['pass']),
+            'pass' => md5($this->Config['login']['pass']),
+            'login' => md5($this->Config['login']),
+            'prompt' => $this->Config['prompt'],
+            'init' => $this->Config['init'],
             'container' => $this->Config['container'],
             'data' => $this->getMyData()
         ]);

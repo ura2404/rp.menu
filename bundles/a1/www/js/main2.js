@@ -20,7 +20,7 @@ $('.cm-top-container').each(function(){
     }
 });
 
-console.log(document.Containers);
+//console.log(document.Containers);
 
 $('.cm-top-container').each(function(){
     $('.cm-item[data-tag]').each(function(){
@@ -49,3 +49,14 @@ new Cursor({
         document.Containers[Code].enter();
     },
 });
+
+$(document).ready(function() {
+    var imageLoaded = function() {
+        $('#white').fadeOut(500);
+    };
+    $('#background').each(function() {
+        var tmpImg = new Image() ;
+        tmpImg.onload = imageLoaded ;
+        tmpImg.src = $(this).data('src') ;
+    }) ;
+}) ;

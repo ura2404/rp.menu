@@ -22,15 +22,14 @@
     {% import "main2.twig" as _self %}
     {{ parent() }}
     
-    <div id="background" class="z-10 h-full w-full fixed">
-        
-    </div>
+    <div id="white" style="background-color: {{init.color }}"></div>
+    <div id="background" class="z-10 h-full w-full fixed" style="background:url('data/{{ init.back }}');background-size:cover;background-position:center;" data-src="data/{{ init.back }}"></div>
     
     {% if error == null %}
         <div id="login" class="cm-top-container cm-noselect m-auto flex flex-col" data-type="login">
             <span class="mx-auto">ВХОД</span>
             <input type="text" oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="cm-noselect z-10 m-auto px-3 text-center _font-bold w-full" data-pass="{{ pass }}"/>
-            <div class="text-center">командный индентификационный номер</div>
+            <div class="text-center">{{ login.prompt }}</div>
         </div>
         
         {% for code,value in data %}

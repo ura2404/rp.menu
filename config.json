@@ -1,9 +1,21 @@
 {
-    "pass" : "123",
+    "login" : {
+        "pass" : "194629378",
+        "prompt" : "командный индентификационный номер"
+    },
+    "init" : {
+        "back" : "back.png",
+        "color" : "black"
+    },
     "container" : {
         "top" : -3,
-        "width" : 60,
-        "height" : 40
+        "width" : 50,
+        "height" : 30
+    },
+    "gpio" : {
+        "enable" : 1,
+        "ping" : 5,
+        "level" : 1
     },
     "data" : {
         "main:menu" : [
