@@ -17,7 +17,7 @@ class Main2 extends Common {
             
             'init' => $this->Config['init'],
             'container' => $this->Config['container'],
-            'data' => $this->getMyData()
+            'data' => $this->getMyData(),
         ]);
     }
     

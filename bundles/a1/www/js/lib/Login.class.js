@@ -37,10 +37,19 @@ export default class Login {
     enter(){
         const Instance = this;
         
-        const Val = $.md5(this.$Input.val());
+        const Val = this.$Input.val();
         const Pass = this.$Input.data('pass');
         
-        if(Val !== Pass) Instance.error();
+        $.ajax({
+           url: this.$Tag.data('url'),
+           dataType : "json",
+           method : "GET",
+           data : {
+               code : Val
+           }
+        });
+        
+        if($.md5(Val) !== Pass) Instance.error();
         else {
             Instance.hide();
             document.Containers.main.show(Instance);

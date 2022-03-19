@@ -50,7 +50,7 @@
 {% endblock %}
 
 {% macro login(code,data) %}
-    <div id="{{ code }}" class="cm-top-container cm-noselect cm-login m-auto z-10 flex flex-col" data-type="login">
+    <div id="{{ code }}" class="cm-top-container cm-noselect cm-login m-auto z-10 flex flex-col" data-type="login" data-url="{{ data.data.url }}">
         <span class="mx-auto">{{ data.data.text }}</span>
         <input type="text" oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="cm-noselect z-10 m-auto px-3 text-center _font-bold w-full" data-pass="{{ data.data.pass|md5 }}"/>
         <div class="text-center">{{ data.data.prompt }}</div>
