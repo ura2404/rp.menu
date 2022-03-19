@@ -17,6 +17,7 @@
     <script type="module" src="js/main2.js"></script>
 {% endblock %}
 
+{% block init %}{{ init.data }}{% endblock %}
 
 {% block body %}
     {% import "main2.twig" as _self %}
@@ -26,14 +27,17 @@
     <div id="background" class="z-10 h-full w-full fixed" style="background:url('data/{{ init.back }}');background-size:cover;background-position:center;" data-src="data/{{ init.back }}"></div>
     
     {% if error == null %}
+        {#
         <div id="login" class="cm-top-container cm-noselect m-auto flex flex-col" data-type="login">
             <span class="mx-auto">ВХОД</span>
             <input type="text" oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="cm-noselect z-10 m-auto px-3 text-center _font-bold w-full" data-pass="{{ pass }}"/>
             <div class="text-center">{{ login.prompt }}</div>
         </div>
+        #}
         
         {% for code,value in data %}
-            {% if code|contains(':menu')%}        {{ _self.menu(code|before(':'),value) }}
+            {% if code|contains(':login')%}       {{ _self.login(code|before(':'),value) }}
+            {% elseif code|contains(':menu')%}    {{ _self.menu(code|before(':'),value) }}
             {% elseif code|contains(':denided')%} {{ _self.denided(code|before(':'),value) }}
             {% elseif code|contains(':video')%}   {{ _self.video(code|before(':'),value) }}
             {% elseif code|contains(':pic')%}     {{ _self.pic(code|before(':'),value) }}
@@ -43,9 +47,15 @@
     {% else %}
         <div class="cm-top-error m-auto text-8xl w-1/2 text-center">{{ error|raw }}</div>
     {% endif %}
-    
-    
 {% endblock %}
+
+{% macro login(code,data) %}
+    <div id="{{ code }}" class="cm-top-container cm-noselect cm-login m-auto z-10 flex flex-col" data-type="login">
+        <span class="mx-auto">{{ data.data.text }}</span>
+        <input type="text" oninput="this.value=this.value.replace(/[^0-9]/g,'');" class="cm-noselect z-10 m-auto px-3 text-center _font-bold w-full" data-pass="{{ data.data.pass|md5 }}"/>
+        <div class="text-center">{{ data.data.prompt }}</div>
+    </div>
+{% endmacro %}
 
 {% macro menu(code,data) %}
     <div id="{{ code }}" class="cm-top-container cm-noselect cm-menu m-auto z-10 flex flex-col" data-type="menu">
@@ -71,42 +81,10 @@
                                 <i class="ml-1 mr-5 mt-3 far fa-sticky-note"></i>
                                 <span>{{ item[1]|raw }}</span>
                             </div>
-                        {% else %}
-                            <div class="cm-item cursor-pointer {% if loop.index == 1 %}cm-active{% endif %}" data-tag="{{ item[0] }}">{{ item[1]|raw }}</div>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-            </div>
-            <div class="direct ml-3 flex flex-col">
-                <i class="cm-button-up cursor-pointer far fa-caret-square-up"></i>
-                <i class="cm-button-down cursor-pointer mt-auto far fa-caret-square-down"></i>
-            </div>
-        </div>
-    </div>
-{% endmacro %}
-
-{% macro list(code,data) %}
-    <div id="{{ code }}" class="cm-top-container cm-noselect cm-list m-auto z-10 flex flex-col" data-type="list">
-        <div class="cm-head flex">
-            <span class="cm-label text-center">{{ data.label }}</span>
-            <span class="cm-button-back cursor-pointer ml-auto flex">
-                <i class="my-auto fas fa-arrow-left"></i>
-                <span class="my-auto ml-4 text-center text-2xl">ESC<br/>вернуться</span>
-            </span>
-        </div>
-        <div class="cm-box p-3 overflow-hidden grow flex">
-            <div class="grow relative">
-                <div class="cm-items absolute">
-                    {% for item in data.data %}
-                        {% if code == 'email' %}
-                            <div class="cm-item cursor-pointer {% if loop.index == 1 %}cm-active{% endif %} flex">
-                                <i class="ml-1 mr-5 mt-3 far fa-envelope"></i>
-                                <span>{{ item[0]|raw }}</span>
-                            </div>
-                        {% elseif code == 'journal' %}
-                            <div class="cm-item cursor-pointer {% if loop.index == 1 %}cm-active{% endif %} flex">
-                                <i class="ml-1 mr-5 mt-3 far fa-sticky-note"></i>
-                                <span>{{ item[0]|raw }}</span>
+                        {% elseif code == 'docs' %}
+                            <div class="cm-item cursor-pointer {% if loop.index == 1 %}cm-active{% endif %} flex" data-tag="{{ item[0] }}">
+                                <i class="ml-1 mr-5 mt-3 far fa-file"></i>
+                                <span>{{ item[1]|raw }}</span>
                             </div>
                         {% else %}
                             <div class="cm-item cursor-pointer {% if loop.index == 1 %}cm-active{% endif %}" data-tag="{{ item[0] }}">{{ item[1]|raw }}</div>
@@ -132,7 +110,7 @@
             </span>
         </div>
         <div class="cm-denided grow flex">
-            <span class="m-auto">{{ data.data }}</span>
+            <span class="m-auto text-center">{{ data.data }}</span>
         </div>
     </div>
 {% endmacro %}

@@ -14,6 +14,7 @@ class Main2 extends Common {
             'pass' => md5($this->Config['login']['pass']),
             'login' => md5($this->Config['login']),
             'prompt' => $this->Config['prompt'],
+            
             'init' => $this->Config['init'],
             'container' => $this->Config['container'],
             'data' => $this->getMyData()

@@ -28,6 +28,7 @@ export default class TextMenu {
     // --- --- --- --- ---
     show(prev){
         if(prev) this.Prev = prev;
+        else(this.$Tag.find('.cm-button-back')).hide();
         
         this.$Tag.addClass('cm-active');
         
@@ -60,6 +61,7 @@ export default class TextMenu {
 
     // --- --- --- --- ---
     esc(){
+        if(!this.Prev) return;
         this.hide();
         this.Prev.show();
     }

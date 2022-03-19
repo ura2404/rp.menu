@@ -25,6 +25,9 @@ class Controller {
         //$Filter = new \Twig_SimpleFilter('rtrim', 'rtrim');
         //$this->Twig->addFilter($Filter);
         
+        $Filter = new \Twig_SimpleFilter('md5', 'md5');
+        $this->Twig->addFilter($Filter);
+        
         $Filter = new \Twig_SimpleFilter('contains', function($value,$cond){
             return strpos($value,$cond)!==false;
         });

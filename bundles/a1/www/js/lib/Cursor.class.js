@@ -25,6 +25,11 @@ export default class Cursor {
             else if(e.keyCode === 13) Instance.Enter();
         });
 
+        $('body').bind('mousewheel', function(e){
+            if(e.originalEvent.wheelDelta /120 > 0) Instance.Up();
+            else Instance.Down();
+        });
+
     }
 
 }

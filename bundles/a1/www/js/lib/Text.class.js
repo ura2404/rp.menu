@@ -26,6 +26,7 @@ export default class Text {
 
     // --- --- --- --- ---
     esc(){
+        if(!this.Prev) return;
         this.hide();
         this.Prev.show();
     }

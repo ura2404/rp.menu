@@ -5,7 +5,8 @@
     },
     "init" : {
         "back" : "back.png",
-        "color" : "black"
+        "color" : "black",
+        "data" : "start"
     },
     "container" : {
         "top" : -3,
@@ -13,11 +14,15 @@
         "height" : 30
     },
     "gpio" : {
-        "enable" : 1,
-        "ping" : 5,
-        "level" : 1
+        "2" : 1,
+        "3" : 1
     },
     "data" : {
+        "start:login" : {
+            "text" : "Вход",
+            "pass" : "194629378",
+            "prompt" : "командный индентификационный номер"
+        },   
         "main:menu" : [
             ["email","Электронная связь"],
             ["system","Системы корабля"],
@@ -65,12 +70,13 @@
         "sys2:denided" : "Доступ заблокирован",
         "sys3:video" : "connect.mp4",
         "sys4:denided" : "Доступ заблокирован",
-        
-        "doc1:pic" : "test.png",
+
+        "_doc1:pic" : "test.png",
+        "doc1:denided" : "Доступ заблокирован",
         "doc2:denided" : "Доступ заблокирован",
         "doc3:denided" : "Доступ заблокирован",
-        "doc4:denided" : "Доступ заблокирован",
-        
+        "doc4:pin" : "4,1,1000",
+
         "em1:text" : "Произведены проверки всех систем<br/>Произведена дозаправка запасных баков",
         "em2:denided" : "Сообщение не доступно",
         "em3:denided" : "Сообщение не доступно",

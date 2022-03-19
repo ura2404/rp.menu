@@ -5,6 +5,7 @@ import Cursor from './lib/Cursor.class.js';
 
 const Menus = {};
 
+// --- --- --- --- ---
 document.Containers = {};
 $('.cm-top-container').each(function(){
     const Code = $(this).attr('id');
@@ -22,6 +23,7 @@ $('.cm-top-container').each(function(){
 
 //console.log(document.Containers);
 
+// --- --- --- --- ---
 $('.cm-top-container').each(function(){
     $('.cm-item[data-tag]').each(function(){
         const Tag = $(this).data('tag');
@@ -29,27 +31,31 @@ $('.cm-top-container').each(function(){
     });
 });
 
-document.Containers.login.show();
-
+// --- --- --- --- ---
 new Cursor({
     esc  : function(){
         const Code = $('.cm-top-container.cm-active').attr('id');
-        document.Containers[Code].esc();
+        if(document.Containers[Code]) document.Containers[Code].esc();
     },
     up   : function(){
         const Code = $('.cm-top-container.cm-active').attr('id');
-        document.Containers[Code].up();
+        if(document.Containers[Code]) document.Containers[Code].up();
     },
     down : function(){
         const Code = $('.cm-top-container.cm-active').attr('id');
-        document.Containers[Code].down();
+        if(document.Containers[Code]) document.Containers[Code].down();
     },
     enter : function(){
         const Code = $('.cm-top-container.cm-active').attr('id');
-        document.Containers[Code].enter();
+        if(document.Containers[Code]) document.Containers[Code].enter();
     },
 });
 
+// открыть стартовый блок
+const Init = $('body').data('init');
+if(document.Containers[Init]) document.Containers[Init].show();
+
+// --- --- --- --- ---
 $(document).ready(function() {
     var imageLoaded = function() {
         $('#white').fadeOut(500);
