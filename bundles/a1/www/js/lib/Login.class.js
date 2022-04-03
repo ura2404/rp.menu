@@ -52,7 +52,7 @@ export default class Login {
         if($.md5(Val) !== Pass) Instance.error();
         else {
             Instance.hide();
-            document.Containers.main.show(Instance);
+            document.Containers.main.show(/*Instance*/);
         }
     }
     

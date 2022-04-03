@@ -59,6 +59,7 @@
 
 {% macro menu(code,data) %}
     <div id="{{ code }}" class="cm-top-container cm-noselect cm-menu m-auto z-10 flex flex-col" data-type="menu">
+        {#
         <div class="cm-head flex">
             <span class="cm-label text-center">{{ data.label }}</span>
             <span class="cm-button-back cursor-pointer ml-auto flex">
@@ -66,6 +67,7 @@
                 <span class="my-auto ml-4 text-center text-2xl">ESC<br/>вернуться</span>
             </span>
         </div>
+        #}
         <div class="cm-box p-3 overflow-hidden grow flex">
             <div class="grow relative">
                 <div class="cm-items absolute w-full">
@@ -104,10 +106,12 @@
     <div id="{{ code }}" class="cm-top-container cm-noselect cm-list m-auto z-10 flex flex-col" data-type="denided">
         <div class="cm-head flex">
             <span class="cm-label text-center">{{ data.label }}</span>
+        {#
             <span class="cm-button-back cursor-pointer ml-auto flex">
                 <i class="my-auto fas fa-arrow-left"></i>
                 <span class="my-auto ml-4 text-center text-2xl">ESC<br/>вернуться</span>
             </span>
+        #}
         </div>
         <div class="cm-denided grow flex">
             <span class="m-auto text-center">{{ data.data }}</span>
@@ -119,10 +123,12 @@
     <div id="{{ code }}" class="cm-top-container cm-noselect cm-video m-auto z-10 flex flex-col" data-type="denided">
         <div class="cm-head flex">
             <span class="cm-label text-center">{{ data.label }}</span>
+        {#
             <span class="cm-button-back cursor-pointer ml-auto flex">
                 <i class="my-auto fas fa-arrow-left"></i>
                 <span class="my-auto ml-4 text-center text-2xl">ESC<br/>вернуться</span>
             </span>
+        #}
         </div>
         <div class="cm-video grow flex">
             <video class="" width="100%" height="100%" preload="auto" autoplay="autoplay" loop="loop" muted="muted">
@@ -136,10 +142,12 @@
     <div id="{{ code }}" class="cm-top-container cm-noselect cm-pic m-auto z-10 flex flex-col" data-type="denided">
         <div class="cm-head flex">
             <span class="cm-label text-center">{{ data.label }}</span>
+        {#
             <span class="cm-button-back cursor-pointer ml-auto flex">
                 <i class="my-auto fas fa-arrow-left"></i>
                 <span class="my-auto ml-4 text-center text-2xl">ESC<br/>вернуться</span>
             </span>
+        #}
         </div>
         <div class="cm-pic grow flex">
             <img src="data/{{ data.data }}" width="100%"></img>
@@ -151,10 +159,12 @@
     <div id="{{ code }}" class="cm-top-container cm-noselect cm-text m-auto z-10 flex flex-col" data-type="denided">
         <div class="cm-head flex">
             <span class="cm-label text-center">{{ data.label }}</span>
+        {#
             <span class="cm-button-back cursor-pointer ml-auto flex">
                 <i class="my-auto fas fa-arrow-left"></i>
                 <span class="my-auto ml-4 text-center text-2xl">ESC<br/>вернуться</span>
             </span>
+        #}
         </div>
         <div class="cm-text grow flex">
             <div class="m-auto">{{ data.data|raw }}</div>

@@ -7,6 +7,7 @@ const Menus = {};
 
 // --- --- --- --- ---
 document.Containers = {};
+
 $('.cm-top-container').each(function(){
     const Code = $(this).attr('id');
     const Type = $(this).data('type');
