@@ -139,7 +139,11 @@
 {% endmacro %}
 
 {% macro pic(code,data) %}
-    <div id="{{ code }}" class="cm-top-container cm-noselect cm-pic m-auto z-10 flex flex-col" data-type="denided">
+    <div id="{{ code }}" class="cm-top-container cm-noselect cm-pic m-auto z-10 flex flex-col" data-type="denided"
+        {% if data.data is iterable %}
+            data-method="{{ data.data[1] }}" data-url="{{ data.data[2] }}" 
+        {% endif %}
+    >
         <div class="cm-head flex">
             <span class="cm-label text-center">{{ data.label }}</span>
         {#
@@ -149,14 +153,21 @@
             </span>
         #}
         </div>
+        
+        {% set d = data.data is iterable ? data.data[0] : data.data %}
+        
         <div class="cm-pic grow flex">
-            <img src="data/{{ data.data }}" width="100%"></img>
+            <img src="data/{{ d }}" width="100%"></img>
         </div>
     </div>
 {% endmacro %}
 
 {% macro text(code,data) %}
-    <div id="{{ code }}" class="cm-top-container cm-noselect cm-text m-auto z-10 flex flex-col" data-type="denided">
+    <div id="{{ code }}" class="cm-top-container cm-noselect cm-text m-auto z-10 flex flex-col" data-type="text"
+        {% if data.data is iterable %}
+            data-method="{{ data.data[1] }}" data-url="{{ data.data[2] }}" 
+        {% endif %}
+    >
         <div class="cm-head flex">
             <span class="cm-label text-center">{{ data.label }}</span>
         {#
@@ -167,7 +178,11 @@
         #}
         </div>
         <div class="cm-text grow flex">
-            <div class="m-auto">{{ data.data|raw }}</div>
+            {% if data.data is iterable %}
+                <div class="m-auto">{{ data.data[0]|raw }}</div>
+            {% else %}
+                <div class="m-auto">{{ data.data|raw }}</div>
+            {% endif %}
         </div>
     </div>
 {% endmacro %}

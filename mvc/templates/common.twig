@@ -19,7 +19,7 @@
         {% endblock style %}
         <script type="text/javascript" src="js/lesscss.org/3.7.1/less.min.js"></script>
     </head>
-    <body data-init="{% block init %}{% endblock %}">
+    <body data-init="{% block init %}{% endblock %}" {#oncontextmenu="return false"#}>
         {% block body %}{% endblock %}
     </body>
     <script type="text/javascript" src="js/jquery.com/jquery-3.6.0.min.js"></script>

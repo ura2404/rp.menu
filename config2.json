@@ -2,10 +2,10 @@
     "init" : {
         "back" : "back.png",
         "color" : "black",
-        "data" : "main"
+        "data" : "start"
     },
     "container" : {
-        "top" : -5,
+        "top" : -3,
         "width" : 50,
         "height" : 30
     },
@@ -18,23 +18,20 @@
         },   
         "main:menu" : [
             ["t1","Дешифровальный куб"],
-            ["t2","Заправка капсулы"],
+            ["t2","Таблица паролей и кодов корабля"],
             ["t3","Таблица координат планет и звёздных систем"],
             ["t4","Инструкция по ремонту лабораторного стенда"]
         ],
-        
-        "t1:pic"  : ["t1.png","get","http://quest-pc:8082/api/solved/decipher_table",null],
-        "t2:text" : ["Капсула заправлена","get","http://quest-pc:8082/api/recive_fuel",null],
-        "t3:pic"  : "t3.png",
-        
+        "t1:pic" : "t1.png",
+        "t2:pic" : "t2.png",
+        "t3:pic" : "t3.png",
         "t4:menu" : [
             ["t41","Ремонт питания стенда"],
             ["t42","Ремонт и перезагрузка ИИ"],
             ["t43","Ремонт электросети и подбор предохранителей"]
         ],
-        
-        "t41:pic" : ["t41.png","get","http://quest-pc:8082/api/solved/reboot_docs",null],
+        "t41:pic" : "t41.png",
         "t42:pic" : "t42.png",
         "t43:pic" : "t43.png"
-    }
+   }
 }

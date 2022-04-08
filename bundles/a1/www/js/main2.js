@@ -17,6 +17,7 @@ $('.cm-top-container').each(function(){
         case 'menu'    : document.Containers[Code] = new TextMenu($(this)); break;
         case 'list'    : document.Containers[Code] = new TextMenu($(this)); break;
         case 'denided' : document.Containers[Code] = new Text($(this)); break;
+        case 'text'    : document.Containers[Code] = new Text($(this)); break;
         case 'video'   : document.Containers[Code] = new Text($(this)); break;
         case 'pic'     : document.Containers[Code] = new Text($(this)); break;
     }
@@ -66,4 +67,10 @@ $(document).ready(function() {
         tmpImg.onload = imageLoaded ;
         tmpImg.src = $(this).data('src') ;
     }) ;
+    
+    $("body").contextmenu(function(e){
+        console.log(e);
+        e.preventDefault();
+        //if(e.ctrlKey && e.altKey) alert( "Вызвано событие .contextmenu()" );
+    });    
 }) ;
