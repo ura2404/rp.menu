@@ -2,7 +2,7 @@
     "init" : {
         "back" : "back.png",
         "color" : "black",
-        "data" : "main"
+        "data" : "start"
     },
     "container" : {
         "top" : -5,
