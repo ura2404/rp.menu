@@ -24,7 +24,7 @@
         ],
         
         "t1:pic"  : ["t1.png","get","http://quest-pc:8082/api/solved/decipher_table",null],
-        "t2:text" : ["Капсула заправлена","get","http://quest-pc:8082/api/recive_fuel",null],
+        "t2:text" : ["Капсула заправлена","get","http://quest-pc:8082/api/capsule_fuel",null],
         "t3:pic"  : "t3.png",
         
         "t4:menu" : [

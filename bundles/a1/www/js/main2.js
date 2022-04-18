@@ -2,6 +2,7 @@ import Login from './lib/Login.class.js';
 import TextMenu from './lib/TextMenu.class.js';
 import Text from './lib/Text.class.js';
 import Cursor from './lib/Cursor.class.js';
+import Reset from './lib/Reset.class.js';
 
 const Menus = {};
 
@@ -69,8 +70,10 @@ $(document).ready(function() {
     }) ;
     
     $("body").contextmenu(function(e){
-        console.log(e);
         e.preventDefault();
         //if(e.ctrlKey && e.altKey) alert( "Вызвано событие .contextmenu()" );
-    });    
+    });
+    
+    new Reset();
+    
 }) ;

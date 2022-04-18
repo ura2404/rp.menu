@@ -24,7 +24,6 @@ export default class Login {
     // --- --- --- --- ---
     error(){
         const Val = this.$Input.val();
-        console.log('error',Val);
         
         this.$Input.addClass('cm-error').val('Неверно').blur();
         setTimeout(() => {
@@ -39,20 +38,13 @@ export default class Login {
         
         const Val = this.$Input.val();
         const Pass = this.$Input.data('pass');
-        
-        $.ajax({
-           url: this.$Tag.data('url'),
-           dataType : "json",
-           method : "GET",
-           data : {
-               code : Val
-           }
-        });
+        console.log(Val);
         
         if($.md5(Val) !== Pass) Instance.error();
         else {
             Instance.hide();
             document.Containers.main.show(/*Instance*/);
+            this.ajax(Val);
         }
     }
     
@@ -62,4 +54,17 @@ export default class Login {
     up(){}
     // --- --- --- --- ---
     down(){}
+
+    // --- --- --- --- ---
+    ajax(val){
+        $.ajax({
+           url: this.$Tag.data('url'),
+           dataType : 'json',
+           method : 'GET',
+           /*data : {
+               code : val
+           }*/
+        });
+    }
+    
 }
