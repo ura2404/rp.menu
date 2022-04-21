@@ -13,7 +13,7 @@
         "start:login" : {
             "text" : "Вход",
             "pass" : "194629378",
-            "prompt" : "командный индентификационный номер",
+            "prompt" : "командный идентификационный номер",
             "url" : "http://quest-pc:8082/api/solved/keyboard"
         },   
         "main:menu" : [
